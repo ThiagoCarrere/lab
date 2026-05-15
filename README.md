@@ -1,4 +1,4 @@
-# 🐧 Laboratório de Testes Linux
+# 🐧 Laboratório
 
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Debian](https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white)
@@ -8,12 +8,12 @@
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![CLI](https://img.shields.io/badge/CLI-FFD43B?style=for-the-badge&logo=terminal&logoColor=black)
 
-Bem-vindo ao meu laboratório de experimentos e testes com Linux! Este repositório contém diversos scripts, configurações e documentações de testes que realizo para aprender e dominar o sistema operacional Linux.
+Bem-vindo ao meu laboratório de experimentos e testes \o/
 
 ## 🚀 Objetivo
 
 Este repositório tem como objetivo:
-- Documentar meus aprendizados com Linux
+- Documentar meus aprendizados
 - Compartilhar scripts úteis
 - Servir como referência para futuros projetos
-- Ajudar outros entusiastas de Linux
+
