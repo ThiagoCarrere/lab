@@ -7,8 +7,7 @@
 ![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![CLI](https://img.shields.io/badge/CLI-FFD43B?style=for-the-badge&logo=terminal&logoColor=black)
-![IA](https://img.shields.io/badge/Inteligência%20Artificial-412991?style=for-the-badge&logo=openai&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=anthropic&logoColor=white)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=1000&color=FCC624&width=500&lines=Experimentos+em+andamento...+%F0%9F%94%A5;Scripts%2C+testes+e+caos+controlado+%E2%9A%A1;Bem-vindo+ao+laborat%C3%B3rio!+%F0%9F%90%A7)](https://git.io/typing-svg)
 
 Bem-vindo ao meu laboratório de experimentos e testes \o/
 
