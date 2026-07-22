@@ -157,6 +157,11 @@ dentro da pasta do projeto faça o que for preciso para que o projeto funcione,
 com responsabilidade claro, mas ao mesmo tempo, é importante perguntar sobre o que pode fazer e 
 salvar essas respostas para evitar ficar perguntando toda hora e perdendo tempo com essas questões!
 
+### 19. TESTES
+Semmpre depois de implementações, faça os testes que achar necessário e não apenas entregue o que foi codado como concluído,
+tarefa concluída é o que foi codado e testado.
+ 
+
 ---
 
 ## Diretrizes de Output por Contexto
