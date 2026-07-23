@@ -11,11 +11,19 @@
 
 ## Preparar um projeto novo (1 comando)
 
-Numa pasta de projeto nova, antes de abrir o Claude Code, rode no terminal (funciona no Git Bash, PowerShell ou cmd):
+Numa pasta de projeto nova, antes de abrir o Claude Code, rode no terminal:
 
+**PowerShell (ou cmd):**
 ```
 powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/ThiagoCarrere/lab/main/bootstrap.ps1 | iex"
 ```
+
+**Git Bash:**
+```
+curl --ssl-no-revoke -fsSL https://raw.githubusercontent.com/ThiagoCarrere/lab/main/bootstrap.sh | bash
+```
+
+Ou simplesmente diga ao Claude Code, numa sessão nova, para rodar o bootstrap a partir da URL — ele executa sozinho, sem depender do seu terminal.
 
 Isso prepara o projeto por completo:
 - Grava as diretrizes de operação (`info.md`) no `CLAUDE.md` do projeto, dentro de um bloco marcado — Claude Code carrega isso automaticamente ao abrir a sessão, sem precisar de comando nenhum
@@ -29,7 +37,7 @@ Rodar o comando de novo no mesmo projeto é seguro — ele atualiza o bloco de d
 
 - `info.md` — diretrizes de operação (papel, princípios inegociáveis, formato de resposta, etc.)
 - `permissions.json` — conjunto padrão de permissões
-- `bootstrap.ps1` — script de preparação de projeto novo
+- `bootstrap.ps1` / `bootstrap.sh` — scripts de preparação de projeto novo (PowerShell e Git Bash)
 - `hooks/lembrete-diretrizes.ps1` — hook de resincronização automática
 - `.claude/commands/` — comandos `/diretrizes` e `/setup` para uso manual dentro de uma sessão já em andamento
 
