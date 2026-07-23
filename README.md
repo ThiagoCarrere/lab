@@ -9,3 +9,27 @@
 ![CLI](https://img.shields.io/badge/CLI-FFD43B?style=for-the-badge&logo=terminal&logoColor=black)
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=1000&color=FCC624&width=500&lines=Experimentos+em+andamento...+%F0%9F%94%A5;Scripts%2C+testes+e+caos+controlado+%E2%9A%A1;Bem-vindo+ao+laborat%C3%B3rio!+%F0%9F%90%A7)](https://git.io/typing-svg)
 
+## Preparar um projeto novo (1 comando)
+
+Numa pasta de projeto nova, antes de abrir o Claude Code, rode no terminal (funciona no Git Bash, PowerShell ou cmd):
+
+```
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/ThiagoCarrere/lab/main/bootstrap.ps1 | iex"
+```
+
+Isso prepara o projeto por completo:
+- Grava as diretrizes de operação (`info.md`) no `CLAUDE.md` do projeto, dentro de um bloco marcado — Claude Code carrega isso automaticamente ao abrir a sessão, sem precisar de comando nenhum
+- Aplica as permissões padrão em `.claude/settings.local.json`
+- Instala o hook de resincronização automática (`.claude/hooks/lembrete-diretrizes.ps1`), que a cada 20 interações rebusca o `info.md` atualizado do GitHub e atualiza o `CLAUDE.md` sozinho
+- Copia os comandos `/diretrizes` e `/setup` para uso manual, se precisar forçar uma resincronização na hora
+
+Rodar o comando de novo no mesmo projeto é seguro — ele atualiza o bloco de diretrizes sem duplicar nem apagar o resto do `CLAUDE.md`.
+
+### Arquivos deste repositório
+
+- `info.md` — diretrizes de operação (papel, princípios inegociáveis, formato de resposta, etc.)
+- `permissions.json` — conjunto padrão de permissões
+- `bootstrap.ps1` — script de preparação de projeto novo
+- `hooks/lembrete-diretrizes.ps1` — hook de resincronização automática
+- `.claude/commands/` — comandos `/diretrizes` e `/setup` para uso manual dentro de uma sessão já em andamento
+
