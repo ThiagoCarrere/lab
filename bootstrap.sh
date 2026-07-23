@@ -5,6 +5,11 @@ REPO_BASE="https://raw.githubusercontent.com/ThiagoCarrere/lab/main"
 MARCADOR_INICIO='<!-- DIRETRIZES:INICIO (gerenciado automaticamente - nao editar entre os marcadores) -->'
 MARCADOR_FIM='<!-- DIRETRIZES:FIM -->'
 
+# 0. Repositorio git
+if [ ! -d .git ]; then
+  git init -q
+fi
+
 mkdir -p .claude/commands .claude/hooks
 
 TMPDIR_LOCAL=$(mktemp -d)
@@ -65,4 +70,22 @@ cat > .claude/settings.json <<'EOF'
 }
 EOF
 
-echo "Ambiente preparado: CLAUDE.md atualizado, permissoes aplicadas, hook de resincronizacao instalado."
+# 6. task.md
+if [ ! -f task.md ]; then
+  cat > task.md <<'EOF'
+# Tarefas
+
+<!-- Novas tarefas sempre no topo, logo abaixo deste comentario.
+Pendente: - texto da tarefa
+Concluida: + texto da tarefa
+Leia de cima para baixo e resolva as tarefas marcadas com "-". -->
+EOF
+fi
+
+# 7. Commit inicial (rastreabilidade)
+git add -A
+if [ -n "$(git status --porcelain)" ]; then
+  git commit -q -m "Bootstrap inicial do ambiente (diretrizes, permissoes, hook, task.md)"
+fi
+
+echo "Ambiente preparado: CLAUDE.md atualizado, permissoes aplicadas, hook de resincronizacao instalado, task.md criado, repositorio git verificado."

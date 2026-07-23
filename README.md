@@ -30,6 +30,9 @@ Isso prepara o projeto por completo:
 - Aplica as permissões padrão em `.claude/settings.local.json`
 - Instala o hook de resincronização automática (`.claude/hooks/lembrete-diretrizes.ps1`), que a cada 20 interações rebusca o `info.md` atualizado do GitHub e atualiza o `CLAUDE.md` sozinho
 - Copia os comandos `/diretrizes` e `/setup` para uso manual, se precisar forçar uma resincronização na hora
+- Verifica se o projeto já tem repositório git; se não tiver, inicializa
+- Cria o `task.md` (lista de tarefas) se ainda não existir
+- Faz o commit inicial de tudo isso, já deixando o projeto rastreável desde o primeiro momento
 
 Rodar o comando de novo no mesmo projeto é seguro — ele atualiza o bloco de diretrizes sem duplicar nem apagar o resto do `CLAUDE.md`.
 

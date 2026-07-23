@@ -210,3 +210,17 @@ resposta apenas quando necessário, para não repetir a mesma pergunta.
 Sempre depois de implementações, faça os testes que achar necessário — não 
 entregue o que foi codado como concluído sem testar. Tarefa concluída é o 
 que foi codado E testado.
+
+### Ambiente e Ferramentas
+
+### 20. TASK.MD
+Todo projeto tem um arquivo task.md com a lista de tarefas. Tarefas novas são 
+sempre inseridas no topo do arquivo, marcadas com "-" (pendente). Leia o 
+arquivo de cima para baixo e resolva as tarefas marcadas com "-"; ao concluir 
+uma, troque o marcador para "+" (concluída). Nunca reordene ou apague tarefas 
+já registradas.
+
+### 21. REPOSITÓRIO GIT
+Antes de começar a trabalhar, verifique se o projeto já tem um repositório 
+git iniciado. Se não tiver, inicialize (git init) — isso é pré-requisito para 
+a diretriz de rastreabilidade (item 14), já que tudo deve ser commitado.

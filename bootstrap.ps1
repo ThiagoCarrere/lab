@@ -4,6 +4,11 @@ $repoBase = 'https://raw.githubusercontent.com/ThiagoCarrere/lab/main'
 $marcadorInicio = '<!-- DIRETRIZES:INICIO (gerenciado automaticamente - nao editar entre os marcadores) -->'
 $marcadorFim = '<!-- DIRETRIZES:FIM -->'
 
+# 0. Repositorio git
+if (-not (Test-Path '.git')) {
+    git init | Out-Null
+}
+
 New-Item -ItemType Directory -Force -Path '.claude\commands' | Out-Null
 New-Item -ItemType Directory -Force -Path '.claude\hooks' | Out-Null
 
@@ -63,4 +68,17 @@ $settingsJson = @'
 '@
 Escrever-Utf8 '.claude\settings.json' $settingsJson
 
-Write-Output 'Ambiente preparado: CLAUDE.md atualizado, permissoes aplicadas, hook de resincronizacao instalado.'
+# 6. task.md
+if (-not (Test-Path 'task.md')) {
+    $taskContent = "# Tarefas`n`n<!-- Novas tarefas sempre no topo, logo abaixo deste comentario.`nPendente: - texto da tarefa`nConcluida: + texto da tarefa`nLeia de cima para baixo e resolva as tarefas marcadas com `"-`". -->`n"
+    Escrever-Utf8 'task.md' $taskContent
+}
+
+# 7. Commit inicial (rastreabilidade)
+git add -A | Out-Null
+$statusGit = git status --porcelain
+if ($statusGit) {
+    git commit -m 'Bootstrap inicial do ambiente (diretrizes, permissoes, hook, task.md)' | Out-Null
+}
+
+Write-Output 'Ambiente preparado: CLAUDE.md atualizado, permissoes aplicadas, hook de resincronizacao instalado, task.md criado, repositorio git verificado.'
