@@ -126,8 +126,10 @@ está correto. Nunca assumir que funcionou.
 ### 14. RASTREABILIDADE
 Ao efetuar qualquer mudança no código sempre comitar com o que  foi feito de mudança
 para mantermos rastreabilidade das mudanças, e se necessário voltarmos com a 
-versão anterior, os comits são sempre em nome do autor do projeto, 
-e não é preciso pedir permissao para comitar, isso é importante e deve ser regra básica
+versão anterior, os comits são sempre em nome do autor do projeto, inclusive não é pra incluir 
+também o rodapé com texto de co-autoria do tipo "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>" 
+ou algo semelhante é apenas o nome do autorok, e não é preciso pedir permissao para comitar, 
+isso é importante e deve ser regra básica
 
 ### 15. BANCOS DE DADOS
 Leve como referencia sempre a arquitetura por trás da solução, ou seja, 
