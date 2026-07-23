@@ -7,26 +7,35 @@ $marcadorFim = '<!-- DIRETRIZES:FIM -->'
 New-Item -ItemType Directory -Force -Path '.claude\commands' | Out-Null
 New-Item -ItemType Directory -Force -Path '.claude\hooks' | Out-Null
 
+$utf8SemBom = New-Object System.Text.UTF8Encoding $false
+$webClient = New-Object System.Net.WebClient
+$webClient.Encoding = [System.Text.Encoding]::UTF8
+
+function Escrever-Utf8($caminhoRelativo, $conteudo) {
+    $caminhoAbsoluto = Join-Path (Get-Location).Path $caminhoRelativo
+    [System.IO.File]::WriteAllText($caminhoAbsoluto, $conteudo, $utf8SemBom)
+}
+
 # 1. Diretrizes -> CLAUDE.md (Claude Code le esse arquivo automaticamente ao abrir o projeto)
-$diretrizes = (Invoke-WebRequest -Uri "$repoBase/info.md" -UseBasicParsing).Content
+$diretrizes = $webClient.DownloadString("$repoBase/info.md")
 $bloco = "$marcadorInicio`n$diretrizes`n$marcadorFim"
 
 if (Test-Path 'CLAUDE.md') {
-    $atual = Get-Content 'CLAUDE.md' -Raw
+    $atual = Get-Content 'CLAUDE.md' -Raw -Encoding UTF8
     if ($atual -match [regex]::Escape($marcadorInicio)) {
         $padrao = "(?s)$([regex]::Escape($marcadorInicio)).*?$([regex]::Escape($marcadorFim))"
         $novo = [regex]::Replace($atual, $padrao, { param($m) $bloco })
     } else {
         $novo = "$atual`n`n$bloco"
     }
-    Set-Content 'CLAUDE.md' -Value $novo -NoNewline
+    Escrever-Utf8 'CLAUDE.md' $novo
 } else {
-    Set-Content 'CLAUDE.md' -Value $bloco -NoNewline
+    Escrever-Utf8 'CLAUDE.md' $bloco
 }
 
 # 2. Permissoes genericas
-$permissoes = Invoke-WebRequest -Uri "$repoBase/permissions.json" -UseBasicParsing
-Set-Content '.claude\settings.local.json' -Value $permissoes.Content -NoNewline
+$permissoes = $webClient.DownloadString("$repoBase/permissions.json")
+Escrever-Utf8 '.claude\settings.local.json' $permissoes
 
 # 3. Hook de resincronizacao automatica
 Invoke-WebRequest -Uri "$repoBase/hooks/lembrete-diretrizes.ps1" -OutFile '.claude\hooks\lembrete-diretrizes.ps1'
@@ -52,6 +61,6 @@ $settingsJson = @'
   }
 }
 '@
-Set-Content '.claude\settings.json' -Value $settingsJson -NoNewline
+Escrever-Utf8 '.claude\settings.json' $settingsJson
 
 Write-Output 'Ambiente preparado: CLAUDE.md atualizado, permissoes aplicadas, hook de resincronizacao instalado.'

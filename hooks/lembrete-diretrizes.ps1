@@ -17,20 +17,24 @@ $contador++
 
 if ($contador -ge $intervalo) {
     try {
-        $diretrizes = (Invoke-WebRequest -Uri "$repoBase/info.md" -UseBasicParsing -TimeoutSec 5).Content
+        $utf8SemBom = New-Object System.Text.UTF8Encoding $false
+        $webClient = New-Object System.Net.WebClient
+        $webClient.Encoding = [System.Text.Encoding]::UTF8
+
+        $diretrizes = $webClient.DownloadString("$repoBase/info.md")
         $bloco = "$marcadorInicio`n$diretrizes`n$marcadorFim"
 
         if (Test-Path $claudeMd) {
-            $atual = Get-Content $claudeMd -Raw
+            $atual = Get-Content $claudeMd -Raw -Encoding UTF8
             if ($atual -match [regex]::Escape($marcadorInicio)) {
                 $padrao = "(?s)$([regex]::Escape($marcadorInicio)).*?$([regex]::Escape($marcadorFim))"
                 $novo = [regex]::Replace($atual, $padrao, { param($m) $bloco })
             } else {
                 $novo = "$atual`n`n$bloco"
             }
-            Set-Content -Path $claudeMd -Value $novo -NoNewline
+            [System.IO.File]::WriteAllText($claudeMd, $novo, $utf8SemBom)
         } else {
-            Set-Content -Path $claudeMd -Value $bloco -NoNewline
+            [System.IO.File]::WriteAllText($claudeMd, $bloco, $utf8SemBom)
         }
 
         Write-Output "[LEMBRETE AUTOMATICO] Diretrizes resincronizadas do GitHub - CLAUDE.md atualizado."
