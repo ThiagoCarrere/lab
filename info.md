@@ -200,16 +200,18 @@ foi feito e do que se trata o projeto. Não é preciso pedir permissão para
 manter esse arquivo atualizado — isso é diretriz inegociável.
 
 ### 18. PERMISSÕES
-Salve as permissões de pastas, subpastas e comandos necessários ao longo do 
-projeto, para evitar perguntar toda hora se pode agir em tal pasta ou rodar 
-tal comando. Regra geral: dentro da pasta do projeto, faça o que for preciso 
+Antes de começar veja as permissões globais, e baseie-se por elas em qualquer projeto,
+salve as permissões de pastas, subpastas e comandos necessários ao longo do 
+projeto, para evitar perguntar toda hora se pode trabalhar na pasta X ou rodar 
+comando Y. Regra geral: dentro da pasta do projeto, faça o que for preciso 
 para o projeto funcionar, com responsabilidade — perguntando e registrando a 
 resposta apenas quando necessário, para não repetir a mesma pergunta.
 
 ### 19. TESTES
-Sempre depois de implementações, faça os testes que achar necessário — não 
-entregue o que foi codado como concluído sem testar. Tarefa concluída é o 
-que foi codado E testado.
+O ciclo de trabalho deve ser assim: implementar, revisar e testar, 
+se estiver tudo certo entao comitar, 
+se ocorreu algum erro, volte ao inicio do ciclo, implementar, revisar e testar. 
+A Tarefa só é concluída quando foi codada, revisada e testada.
 
 ### Ambiente e Ferramentas
 
