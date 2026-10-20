@@ -79,7 +79,7 @@ df -h | awk '/\/dev\/(nvme0n1p2|sda|sdb|sdc)/ {gsub("/dev/","",$1);
     printf "\033[1;31m%s\033[0m: \033[1;37m%s | %s | %s\n", $1, $2, $3, $5}' | sort -t '|' -k1,1 -k1.1,1n -k1.2,1n
 
 # Uso de memória formatado com cores
-mem_info=$(free -m | awk 'FNR==2 {printf "\033[1;34mMemória: \033[1;37m%dMi | %dMi | \033[1;37m%.2f%%\n", $3, $2, $3/$2 * 100.0}')
+mem_info=$(free -m | awk 'FNR==2 {printf "\033[1;34mMemória: \033[1;37m%dMi | %dMi | \033[1;37m%.2f%%\n", $3, $2, $3/$2 * 100.0}') 
 echo -e "${mem_info}\033[0m"
 
 echo -e "\033[1;34mProcessos: \033[1;37m$(ps aux | wc -l)\033[0m"
